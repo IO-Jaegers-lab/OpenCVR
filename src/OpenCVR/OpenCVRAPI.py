@@ -1,4 +1,4 @@
-from FetchCVR.Labels \
+from OpenCVR.Labels \
     import denmark
 
 
