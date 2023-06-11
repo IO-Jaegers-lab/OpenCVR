@@ -44,5 +44,7 @@ class SearchByCVRInRegistry:
         }
 
 
-def append_and_to_request(append_to_str) -> str:
+def append_and_to_request(
+        append_to_str
+) -> str:
     return str(append_to_str + url_and_parameter)
