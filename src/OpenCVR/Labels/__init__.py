@@ -6,3 +6,12 @@ from OpenCVR.Labels.defaults \
     default_email, \
     default_user_agent
 
+from OpenCVR.Labels.urls \
+    import \
+    api_url, \
+    url_search_parameter, \
+    url_country_parameter, \
+    url_request, \
+    url_vat_parameter, \
+    url_and_parameter
+

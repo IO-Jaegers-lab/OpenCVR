@@ -1,4 +1,7 @@
 
 def denmark() -> str:
-    return 'da'
+    return 'dk'
 
+
+def norway() -> str:
+    return 'no'
