@@ -13,5 +13,12 @@ def test_search_for_cvr() -> None:
     test = Singleton.get_open_cvr_api()
     cvr: str = '41157089'
 
-    search = SearchByCVRInRegistry(configuration=test, search_by_cvr=cvr)
+    search = SearchByCVRInRegistry(
+        configuration=test,
+        search_by_cvr=cvr
+    )
+
     search.call()
+
+    assert not (search.content is None)
+

@@ -24,7 +24,7 @@ class SearchByCVRInRegistry:
 
         self.content = None
 
-    def make_request(self) -> str:
+    def make_url_request(self) -> str:
         final_url = api_url + url_request
         final_url = final_url + url_country_parameter + self.configuration.get_country()
         final_url = append_and_to_request(final_url)
@@ -33,10 +33,15 @@ class SearchByCVRInRegistry:
         return final_url
 
     def call(self):
-        url = self.make_request()
-
-        retrieve_request = get(url)
+        url = self.make_url_request()
+        retrieve_request = get(url, headers=self.generate_header())
         self.content = retrieve_request.json()
+
+    def generate_header(self):
+        return {
+            'User-Agent': self.configuration.get_user_agent(),
+            'From': self.configuration.get_contact()
+        }
 
 
 def append_and_to_request(append_to_str) -> str:
