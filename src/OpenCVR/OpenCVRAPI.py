@@ -2,7 +2,8 @@ from OpenCVR.Labels \
     import \
     denmark, \
     default_email, \
-    default_user_agent
+    default_user_agent, \
+    json
 
 
 class OpenCVRAPI:
@@ -10,11 +11,13 @@ class OpenCVRAPI:
             self,
             user_agent: None | str = default_user_agent(),
             country: None | str = denmark(),
-            contact: None | str = default_email()
+            contact: None | str = default_email(),
+            response_format: str | str = json()
     ):
         self.country: str = country
         self.user_agent: str = user_agent
         self.contact: str = contact
+        self.response_format: str = response_format
 
     def get_country(self) -> None | str:
         return self.country

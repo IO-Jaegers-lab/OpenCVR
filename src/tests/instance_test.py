@@ -4,6 +4,9 @@ from OpenCVR \
 from OpenCVR.SearchByCVR \
     import SearchByCVRInRegistry
 
+from OpenCVR.SearchByName \
+    import SearchByNameInRegistry
+
 
 def test_create_instance() -> None:
     test = Singleton.get_open_cvr_api()
@@ -22,4 +25,20 @@ def test_search_for_cvr() -> None:
     search.call()
 
     assert not (search.content is None)
+
+
+def test_search_for_name() -> None:
+    test = Singleton.get_open_cvr_api()
+
+    name: str = 'io-jaegers'
+
+    search = SearchByNameInRegistry(
+        configuration=test,
+        search_by_name=name
+    )
+
+    search.call()
+
+    assert not (search.content is None)
+
 

@@ -5,3 +5,4 @@ def denmark() -> str:
 
 def norway() -> str:
     return 'no'
+

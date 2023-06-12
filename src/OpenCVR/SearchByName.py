@@ -8,25 +8,25 @@ from OpenCVR.Labels \
     import \
     url_country_parameter, \
     api_url, \
-    url_vat_parameter, \
+    url_name_parameter, \
     url_format_parameter
 
 
-class SearchByCVRInRegistry:
+class SearchByNameInRegistry:
     def __init__(
             self,
             configuration: OpenCVRAPI,
-            search_by_cvr: str
+            search_by_name: str
     ):
         self.configuration = configuration
-        self.search_by_cvr = search_by_cvr
+        self.search_by_name = search_by_name
 
         self.content = None
 
     def payload(self):
         return {
             url_country_parameter: self.configuration.get_country(),
-            url_vat_parameter: self.search_by_cvr,
+            url_name_parameter: self.search_by_name,
             url_format_parameter: self.configuration.response_format
         }
 
@@ -47,4 +47,3 @@ class SearchByCVRInRegistry:
             'User-Agent': self.configuration.get_user_agent(),
             'From': self.configuration.get_contact()
         }
-
