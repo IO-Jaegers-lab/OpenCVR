@@ -1,7 +1,8 @@
 from OpenCVR \
     import Singleton
 
-from OpenCVR.SearchByCVR import SearchByCVRInRegistry
+from OpenCVR.SearchByCVR \
+    import SearchByCVRInRegistry
 
 
 def test_create_instance() -> None:

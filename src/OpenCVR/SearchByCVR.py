@@ -8,8 +8,6 @@ from OpenCVR.Labels \
     import \
     url_country_parameter, \
     api_url, \
-    url_request, \
-    url_and_parameter, \
     url_vat_parameter
 
 
@@ -24,17 +22,21 @@ class SearchByCVRInRegistry:
 
         self.content = None
 
-    def make_url_request(self) -> str:
-        final_url = api_url + url_request
-        final_url = final_url + url_country_parameter + self.configuration.get_country()
-        final_url = append_and_to_request(final_url)
-        final_url = final_url + url_vat_parameter + self.search_by_cvr
-
-        return final_url
+    def payload(self):
+        return {
+            url_country_parameter: self.configuration.get_country(),
+            url_vat_parameter: self.search_by_cvr
+        }
 
     def call(self):
-        url = self.make_url_request()
-        retrieve_request = get(url, headers=self.generate_header())
+        url = api_url
+
+        retrieve_request = get(
+            url,
+            headers=self.generate_header(),
+            params=self.payload()
+        )
+
         self.content = retrieve_request.json()
 
     def generate_header(self):
@@ -43,8 +45,3 @@ class SearchByCVRInRegistry:
             'From': self.configuration.get_contact()
         }
 
-
-def append_and_to_request(
-        append_to_str
-) -> str:
-    return str(append_to_str + url_and_parameter)

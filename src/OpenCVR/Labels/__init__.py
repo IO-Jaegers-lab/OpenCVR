@@ -11,7 +11,5 @@ from OpenCVR.Labels.urls \
     api_url, \
     url_search_parameter, \
     url_country_parameter, \
-    url_request, \
-    url_vat_parameter, \
-    url_and_parameter
+    url_vat_parameter
 
